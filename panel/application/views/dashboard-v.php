@@ -85,9 +85,6 @@
 	</div>   --> <!---->
   <!-- #app-customizer -->
 	
-	<!-- SIDE PANEL -->
-  <?php $this->load->view('includes/right-aside');  ?>
-	<!-- /#side-panel -->
 
   <?php $this->load->view('includes/include_script');  ?>
 
