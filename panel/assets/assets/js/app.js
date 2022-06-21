@@ -1,4 +1,4 @@
-function($, window){ 'use strict';
++function($, window){ 'use strict';
 
 	var app = {
 		name: 'Infinity',

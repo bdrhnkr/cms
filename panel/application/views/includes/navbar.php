@@ -44,10 +44,6 @@
             <i class="zmdi zmdi-hc-lg zmdi-search"></i>
           </a>
         </li>
-
-              
-
-        
       </ul>
     </div>
   </div><!-- navbar-container -->
