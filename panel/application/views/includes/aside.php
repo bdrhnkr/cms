@@ -89,7 +89,8 @@
         </li>
 
         <li>
-          <a href="javascript:void(0)">
+          <!-- Bu kod ile controller altında product isimli dosyayı bulup çalıştırıcak -->
+          <a href="<?php echo base_url('/product') ?>">
             <i class="menu-icon fa fa-cubes"></i>
             <span class="menu-text">Ürünler</span>
           </a>

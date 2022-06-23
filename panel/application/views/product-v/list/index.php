@@ -3,39 +3,38 @@
 <html lang="tr">
 <head>
 	<?php $this->load->view('includes/head');  ?>
-  <?php $this->load->view('includes/include_style');  ?>
+	<?php $this->load->view('includes/include_style');  ?>
 
 
 
 </head>
-	
+
 <body class="menubar-left menubar-unfold menubar-light theme-primary">
-<!--============= start main area -->
-<?php $this->load->view("includes/navbar.php");?>
+	<!--============= start main area -->
+	<?php $this->load->view("includes/navbar.php");?>
 
-<!-- APP ASIDE ==========-->
-<?php $this->load->view("includes/aside.php");?>
-<!--========== END app aside -->
+	<!-- APP ASIDE ==========-->
+	<?php $this->load->view("includes/aside.php");?>
+	<!--========== END app aside -->
 
-<!-- navbar search -->
-<?php $this->load->view("includes/navbar-search.php");?>
-<!-- .navbar-search -->
+	<!-- navbar search -->
+	<?php $this->load->view("includes/navbar-search.php");?>
+	<!-- .navbar-search -->
 
-<!-- APP MAIN ==========-->
-<main id="app-main" class="app-main">
-  <div class="wrap">
-	<section class="app-content">
-  <?php $this->load->view("dashboard-v/content"); ?>
-			
-	</section><!-- #dash-content -->
-</div>
-<!-- .wrap -->
+	<!-- APP MAIN ==========-->
+	<main id="app-main" class="app-main">
+		<div class="wrap">
+			<section class="app-content">
+				<?php $this->load->view("{$viewFolder}/{$subViewFolder}/content"); ?>
+			</section><!-- #dash-content -->
+		</div>
+		<!-- .wrap -->
 
-  <!-- APP FOOTER -->
-  <?php $this->load->view("includes/footer"); ?>
-  <!-- /#app-footer -->
-</main>
-<!--========== END app main -->
+		<!-- APP FOOTER -->
+		<?php $this->load->view("includes/footer"); ?>
+		<!-- /#app-footer -->
+	</main>
+	<!--========== END app main -->
 
 	<!-- APP CUSTOMIZER -->
 	<!-- <div id="app-customizer" class="app-customizer">
@@ -77,22 +76,22 @@
 				</div><!-- .tab-pane -->
 				<!-- <div role="tabpanel" class="tab-pane fade" id="navbar-customizer">
 					<!-- This Section is populated Automatically By javascript -->
-				<!-- </div><!-- .tab-pane -->
+					<!-- </div><!-- .tab-pane -->
 			<!-- </div>
-		</div><!-- .customizer-taps -->
+			</div><!-- .customizer-taps -->
 		<!-- <hr class="m-0">
 		<div class="customizer-reset">
 			<button id="customizer-reset-btn" class="btn btn-block btn-outline btn-primary">Reset</button>
 			<a href="https://themeforest.net/item/infinity-responsive-web-app-kit/16230780" class="m-t-sm btn btn-block btn-danger">Buy Now</a>
 		</div>
 	</div>   --> <!---->
-  <!-- #app-customizer -->
+	<!-- #app-customizer -->
 	
 	<!-- SIDE PANEL -->
-  <?php $this->load->view('includes/right-aside');  ?>
+	<?php $this->load->view('includes/right-aside');  ?>
 	<!-- /#side-panel -->
 
-  <?php $this->load->view('includes/include_script');  ?>
+	<?php $this->load->view('includes/include_script');  ?>
 
 
 
