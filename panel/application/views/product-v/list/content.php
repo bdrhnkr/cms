@@ -1,11 +1,18 @@
 product-v -> content.php
 <div class="row">
 	<div class="col-md-12">
-		<h4 class="m-b-lg">Ürün Listesi</h4>
+		<h4 class="m-b-lg">
+			Ürün Listesi
+			<a href="" class="btn btn-outline btn-primary btn-sm pull-right"><i class="fa fa-plus"></i> Yeni Ekle</a>
+		</h4>
 	</div><!-- END column -->
 	<div class="col-md-12">
 		<div class="widget p-lg">
-		
+
+			<div class="alert alert-info text-center">
+				<p>Burada herhangi bir veri bulunmamaktadır. Eklemek için <a href="">tıklayın</a>.</p>
+			</div>
+
 			<table class="table table-striped table-hover">
 
 				<thead>
@@ -23,10 +30,12 @@ product-v -> content.php
 						<td>monitor</td>
 						<td>Monitör</td>
 						<td>360 derece dönebilen monitör</td>
-						<td>1/0</td>
 						<td>
-						    <button type="button" class="btn btn-sm btn-danger btn-outline"><i class="fa fa-trash"></i> Sil</button>
-						    <button type="button" class="btn btn-sm btn-warning btn-outline"><i class="fa fa-pencil-square-o"></i> Düzenle</button>
+							<input id="switch-2-2" type="checkbox" data-switchery data-color="#10c469" checked />
+						</td>
+						<td>
+							<button type="button" class="btn btn-sm btn-danger btn-outline"><i class="fa fa-trash"></i> Sil</button>
+							<button type="button" class="btn btn-sm btn-warning btn-outline"><i class="fa fa-pencil-square-o"></i> Düzenle</button>
 						</td>
 					</tr>
 					
