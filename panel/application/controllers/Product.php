@@ -13,15 +13,24 @@ class Product extends CI_Controller {
 		$this->viewFolder = "product-v";
 		//ekleme düzenklme vs. herşey bunun içinde olucak
 
+		$this->load->model("product_model");
+
+
 	}
 
 	public function index()
 	{
+		// tablodan verilerin getirilmesi
+		$items = $this->product_model->get_all();
 
 		$viewData = new stdClass();
+
 		$viewData->viewFolder = $this->viewFolder;
 		// Bu kod ile product-v 'yi viewfolder olarak product-v/list/index.php'ye gönderdik
 		$viewData->subViewFolder = "list";
+		$viewData->items= $items;
+
+
 
 		
 		$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index.php", $viewData);
