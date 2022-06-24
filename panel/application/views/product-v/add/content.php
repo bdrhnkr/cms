@@ -14,7 +14,11 @@ product-v -> add -> content.php
 				<form action="<?= base_url("product/save");?>" method="post">
 					<div class="form-group">
 						<label>Başlık</label>
-						<input class="form-control" name="title">
+						<input class="form-control" name="title" placeholder="Başlık">
+						<?php if (isset($form_error)) { ?>
+							<small class="input-form-error pull-right"><?=form_error("title");?></small>
+
+						<?php } ?>
 					</div>
 					<div class="form-group">
 						<label>Açıklama</label>
