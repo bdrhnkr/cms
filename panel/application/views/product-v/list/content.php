@@ -3,7 +3,7 @@ product-v -> content.php
 	<div class="col-md-12">
 		<h4 class="m-b-lg">
 			Ürün Listesi
-			<a href="" class="btn btn-outline btn-primary btn-sm pull-right"><i class="fa fa-plus"></i> Yeni Ekle</a>
+			<a href="<?= base_url("product/new_form")?>" class="btn btn-outline btn-primary btn-sm pull-right"><i class="fa fa-plus"></i> Yeni Ekle</a>
 		</h4>
 	</div><!-- END column -->
 	<div class="col-md-12">
@@ -13,7 +13,7 @@ product-v -> content.php
 			<?php if(empty($items)){ ?>
 
 				<div class="alert alert-info text-center">
-					<p>Burada herhangi bir veri bulunmamaktadır. Eklemek için <a href="">tıklayın</a>.</p>
+					<p>Burada herhangi bir veri bulunmamaktadır. Eklemek için <a href="<?= base_url("product/new-form")?>">tıklayın</a>.</p>
 				</div>
 			<?php }else{ ?>
 
