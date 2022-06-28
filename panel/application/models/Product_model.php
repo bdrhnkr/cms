@@ -10,9 +10,14 @@ class Product_model extends CI_Model{
 		parent::__construct();
 	}
 
+	public function get($where = array()){
+		return $this->db->where($where)->get($this->tableName)->row();
+		/* sadece bir kayıt getirmesi için row() yazdık.*/
+	}
+
 	// Tüm kayıtları getirir
-	public function get_all(){
-		return $this->db->get($this->tableName)->result();
+	public function get_all($where = array()){
+		return $this->db->where($where)->get($this->tableName)->result();
 
 	}
 
@@ -20,6 +25,8 @@ class Product_model extends CI_Model{
 
 		return $this->db->insert($this->tableName,$data);
 	}
+
+
 
 }
 

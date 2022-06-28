@@ -40,7 +40,6 @@ class Product extends CI_Controller {
 	// Yeni ürün ekleme formu
 	public function new_form(){
 
-
 		$viewData = new stdClass();
 		$viewData->viewFolder = $this->viewFolder;
 		$viewData->subViewFolder = "add";
@@ -73,15 +72,20 @@ class Product extends CI_Controller {
 			$insert = $this->product_model->add(array(
 				"title" => $this->input->post("title"),
 				"description" => $this->input->post("description"),
-				"url" => "test..",
+				"url" => convertToSEO($this->input->post("title")),
+				"rank" => 0,
 				"isActive" => 1,
 				"createdAt" => date("Y-m-d H:i:s")
 			)
 		);
+
+			//   TODO ALERT SİSTEMİ EKLENECEK 
 			if ($insert) {
-				echo "kayıt işlemi başarılı";
+				
+				redirect(base_url("product"));
+
 			}else{
-				echo "islem basarısızdır.";
+				redirect(base_url("product"));
 			}
 		}else{ 
 			$viewData = new stdClass();
@@ -95,5 +99,26 @@ class Product extends CI_Controller {
 		// basarılı ise -> kayıt yapılır
 		// basarısız ise -> hata ekranda gösterilir
 
+	}
+
+	public function update_form($id){
+
+		/* tablodan verilein çekilmesi */
+		$item = $this->product_model->get(
+			array(
+				"id" => $id
+			)
+		);
+
+		/* producmodelde tüm ürünlerin verisini çekmek için kod yazmıstık oraya yeni fonksiyon eklicez.
+
+
+		/** Vİew'e gönderilecek değişkenlerin set edilmesi */
+		$viewData = new stdClass();
+		$viewData->viewFolder = $this->viewFolder;
+		$viewData->subViewFolder = "update";
+		$viewData->item = $item;
+
+		$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index",$viewData);
 	}
 }

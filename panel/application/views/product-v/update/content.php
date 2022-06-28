@@ -1,8 +1,8 @@
-product-v -> add -> content.php
+product-v -> update -> content.php
 <div class="row">
 	<div class="col-md-12">
 		<h4 class="m-b-lg">
-			Ürün Ekleme
+			<?php echo "<b>$item->title</b> kaydını düzenliyorsunuz" ; ?>
 			<a href="" class="btn btn-outline btn-primary btn-sm pull-right"><i class="fa fa-plus"></i> Yeni Ekle</a>
 		</h4>
 	</div><!-- END column -->
@@ -14,7 +14,7 @@ product-v -> add -> content.php
 				<form action="<?= base_url("product/save");?>" method="post">
 					<div class="form-group">
 						<label>Başlık</label>
-						<input class="form-control" name="title" placeholder="Başlık">
+						<input class="form-control" name="title" placeholder="Başlık" value="<?php echo $item->title ?>">
 						<?php if (isset($form_error)) { ?>
 							<!-- Eğer form_error true ise-->
 							<small class="input-form-error pull-right"><?=form_error("title");?></small>
@@ -22,7 +22,9 @@ product-v -> add -> content.php
 					</div>
 					<div class="form-group">
 						<label>Açıklama</label>
-						<textarea name="description" class="m-0" data-plugin="summernote" data-options="{height: 250}"></textarea>
+						<textarea name="description" class="m-0" data-plugin="summernote" data-options="{height: 250}">
+							<?php echo $item->description; ?>
+						</textarea>
 					</div>
 					
 					<button type="submit" class="btn btn-primary btn-md btn-outline">Kaydet</button>

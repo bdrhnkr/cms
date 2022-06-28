@@ -1,4 +1,4 @@
-product-v -> content.php
+product-v -> list -> content.php
 <div class="row">
 	<div class="col-md-12">
 		<h4 class="m-b-lg">
@@ -20,7 +20,7 @@ product-v -> content.php
 				<table class="table table-striped table-hover">
 
 					<thead>
-						<th>#id</th>
+						<th>id</th>
 						<th>url</th>
 						<th>Başlık</th>
 						<th>Açıklama</th>
@@ -46,8 +46,8 @@ product-v -> content.php
 									/>
 								</td>
 								<td>
-									<button type="button" class="btn btn-sm btn-danger btn-outline"><i class="fa fa-trash"></i> Sil</button>
-									<button type="button" class="btn btn-sm btn-warning btn-outline"><i class="fa fa-pencil-square-o"></i> Düzenle</button>
+									<a href="#" class="btn btn-sm btn-danger btn-outline"><i class="fa fa-trash"></i> Sil</a>
+									<a href="<?=base_url("product/update_form/$item->id")?>" class="btn btn-sm btn-warning btn-outline"><i class="fa fa-pencil-square-o"></i> Düzenle</a>
 								</td>
 							</tr>
 						<?php } ?>
