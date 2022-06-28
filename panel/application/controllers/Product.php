@@ -14,13 +14,10 @@ class Product extends CI_Controller {
 		//ekleme düzenklme vs. herşey bunun içinde olucak
 
 		$this->load->model("product_model");
-
-
 	}
 
 	/* veri tabanından tüm ürünlerin çağırılması */
-	public function index()
-	{
+	public function index(){
 		// tablodan verilerin getirilmesi
 		$items = $this->product_model->get_all();
 
@@ -180,8 +177,24 @@ class Product extends CI_Controller {
 
 		// basarılı ise -> kayıt yapılır
 		// basarısız ise -> hata ekranda gösterilir
-
 	}
+
+	public function delete($id){
+		$delete = $this->product_model->delete(
+			array(
+				"id" => $id 
+			)
+		);
+
+		// TODO alert sistemi eklenecek
+		if ($delete) {
+			redirect(base_url("product"));
+		}else{
+			redirect(base_url("product"));
+		}
+	}
+
+
 
 
 }

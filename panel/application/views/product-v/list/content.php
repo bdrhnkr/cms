@@ -46,18 +46,22 @@ product-v -> list -> content.php
 									/>
 								</td>
 								<td>
-									<a href="#" class="btn btn-sm btn-danger btn-outline"><i class="fa fa-trash"></i> Sil</a>
-									<a href="<?=base_url("product/update_form/$item->id")?>" class="btn btn-sm btn-warning btn-outline"><i class="fa fa-pencil-square-o"></i> Düzenle</a>
-								</td>
-							</tr>
-						<?php } ?>
+									<button 
+										data-url="<?=base_url("product/delete/$item->id");?>" 
+										class="btn btn-sm btn-danger btn-outline remove-btn">
+										<i class="fa fa-trash"></i> Sil
+									</button>
+								<button href="<?=base_url("product/update_form/$item->id")?>" class="btn btn-sm btn-warning btn-outline"><i class="fa fa-pencil-square-o"></i> Düzenle</button>
+							</td>
+						</tr>
+					<?php } ?>
 
-					</tbody>
+				</tbody>
 
-				</table>
-			<?php } ?>
-		</div><!-- .widget -->
-	</div><!-- END column -->
+			</table>
+		<?php } ?>
+	</div><!-- .widget -->
+</div><!-- END column -->
 
 
 </div>
