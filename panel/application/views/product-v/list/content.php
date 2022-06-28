@@ -20,6 +20,7 @@ product-v -> list -> content.php
 				<table class="table table-striped table-hover">
 
 					<thead>
+						<th><i class="fa fa-reorder"></i></th>
 						<th>id</th>
 						<th>url</th>
 						<th>Başlık</th>
@@ -28,16 +29,19 @@ product-v -> list -> content.php
 						<th>İşlem</th>
 					</theah>
 
-					<tbody>
+					<tbody class="sortable" data-url="<?=base_url("product/rankSetter");?>">
 
 						<?php foreach($items as $item){ ?>
-							<tr>
+							<tr id="ord-<?= $item->id; ?>">
+								<th><i class="fa fa-reorder"></i></th>
 								<td>#<?php echo $item->id; ?></td>
 								<td><?php echo $item->url; ?></td>
 								<td><?php echo $item->title; ?></td>
 								<td><?php echo $item->description; ?></td>
 								<td>
 									<input 
+									data-url="<?=base_url("product/isActiveSetter/$item->id"); ?>"
+									class="isActive"
 									type="checkbox" 
 									data-switchery 
 									data-color="#10c469" 
@@ -47,10 +51,10 @@ product-v -> list -> content.php
 								</td>
 								<td>
 									<button 
-										data-url="<?=base_url("product/delete/$item->id");?>" 
-										class="btn btn-sm btn-danger btn-outline remove-btn">
-										<i class="fa fa-trash"></i> Sil
-									</button>
+									data-url="<?=base_url("product/delete/$item->id"); ?>" 
+									class="btn btn-sm btn-danger btn-outline remove-btn">
+									<i class="fa fa-trash"></i> Sil
+								</button>
 								<button href="<?=base_url("product/update_form/$item->id")?>" class="btn btn-sm btn-warning btn-outline"><i class="fa fa-pencil-square-o"></i> Düzenle</button>
 							</td>
 						</tr>

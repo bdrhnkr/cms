@@ -19,7 +19,9 @@ class Product extends CI_Controller {
 	/* veri tabanından tüm ürünlerin çağırılması */
 	public function index(){
 		// tablodan verilerin getirilmesi
-		$items = $this->product_model->get_all();
+		$items = $this->product_model->get_all(
+			array(), "rank ASC"
+		);
 
 		$viewData = new stdClass();
 
@@ -33,7 +35,6 @@ class Product extends CI_Controller {
 		
 		$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index.php", $viewData);
 	}
-
 
 	// Yeni ürün ekleme formu
 	public function new_form(){
@@ -97,7 +98,6 @@ class Product extends CI_Controller {
 
 		// basarılı ise -> kayıt yapılır
 		// basarısız ise -> hata ekranda gösterilir
-
 	}
 
 	/* güncelle butonuna verielin çekilmesi */
@@ -121,7 +121,6 @@ class Product extends CI_Controller {
 
 		$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index",$viewData);
 	}
-
 
 	/* güncelle butonunun veriyi güncellemesi */
 	public function update($id){ 
@@ -194,7 +193,42 @@ class Product extends CI_Controller {
 		}
 	}
 
+	public function isActiveSetter($id){
+		if ($id) {
+			
+			$isActive = ($this->input->post("data")) == "true" ? 1 : 0;
 
+			$this->product_model->update(array(
+				"id" => $id
+			),
+			array(
+				"isActive" => $isActive
+			)
+		);
+		}
+	}
 
+	public function rankSetter(){
+		
+		$data = $this->input->post("data");
+
+		parse_str($data, $order);
+
+		$items = $order["ord"];
+
+		foreach($items as $rank => $id){
+
+			$this->product_model->update(
+				array(
+					"id" 		=> $id,
+					"rank !=" 	=> $rank 
+				),
+				/* idsi ve rankı bu olanlara aşağıdaki işlemi uygula */
+				array(
+					"rank" 		=> $rank
+				)
+			); 
+		}
+	}
 
 }
