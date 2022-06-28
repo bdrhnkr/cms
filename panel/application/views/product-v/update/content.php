@@ -11,7 +11,7 @@ product-v -> update -> content.php
 
 			<div class="widget-body">
 				
-				<form action="<?= base_url("product/save");?>" method="post">
+				<form action="<?= base_url("product/update/$item->id");?>" method="post">
 					<div class="form-group">
 						<label>Başlık</label>
 						<input class="form-control" name="title" placeholder="Başlık" value="<?php echo $item->title ?>">
@@ -27,7 +27,7 @@ product-v -> update -> content.php
 						</textarea>
 					</div>
 					
-					<button type="submit" class="btn btn-primary btn-md btn-outline">Kaydet</button>
+					<button type="submit" class="btn btn-primary btn-md btn-outline">Güncelle</button>
 					<a href="<?= base_url("product") ?>" class="btn btn-md btn-warning btn-outline">İptal</a>
 				</form>
 			</div><!-- .widget-body -->

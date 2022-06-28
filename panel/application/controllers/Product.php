@@ -18,6 +18,7 @@ class Product extends CI_Controller {
 
 	}
 
+	/* veri tabanından tüm ürünlerin çağırılması */
 	public function index()
 	{
 		// tablodan verilerin getirilmesi
@@ -47,6 +48,7 @@ class Product extends CI_Controller {
 		$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index",$viewData);
 	}
 
+	/* Yeni kayıt ekleme */
 	public function save(){
 
 		$this->load->library("form_validation");
@@ -101,6 +103,7 @@ class Product extends CI_Controller {
 
 	}
 
+	/* güncelle butonuna verielin çekilmesi */
 	public function update_form($id){
 
 		/* tablodan verilein çekilmesi */
@@ -121,4 +124,64 @@ class Product extends CI_Controller {
 
 		$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index",$viewData);
 	}
+
+
+	/* güncelle butonunun veriyi güncellemesi */
+	public function update($id){ 
+
+		$this->load->library("form_validation");
+
+		// Kurallar yazılır 
+		$this->form_validation->set_rules("title","Başlık","required|trim");
+
+		$this->form_validation->set_message(
+			array(
+				"required" => "<b>'{field}'</b> alanı doldurulmalıdır"
+			)
+		);
+		// field placeholder ı temsil eder
+
+		// form validation çalışır
+		// 	TRUE YADA FALSE DÖNER
+		// Trueysa üstteki koddaki kurallardan başarılı şekilde geçmiştir.
+		$validate = $this->form_validation->run();
+
+
+
+		if ($validate) {
+			$update = $this->product_model->update(
+				array(
+					"id" => $id 
+				),
+				array(
+					"title" => $this->input->post("title"),
+					"description" => $this->input->post("description"),
+					"url" => convertToSEO($this->input->post("title")),
+				)
+			);
+
+			//   TODO ALERT SİSTEMİ EKLENECEK 
+			if ($update) {
+				
+				redirect(base_url("product"));
+
+			}else{
+				redirect(base_url("product"));
+			}
+		}else{ 
+			$viewData = new stdClass();
+			$viewData->viewFolder = $this->viewFolder;
+			$viewData->subViewFolder = "update";
+			$viewData->form_error = true;
+			$viewData->item = $item;
+
+			$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index",$viewData);
+		}
+
+		// basarılı ise -> kayıt yapılır
+		// basarısız ise -> hata ekranda gösterilir
+
+	}
+
+
 }
