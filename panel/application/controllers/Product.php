@@ -259,10 +259,17 @@ class Product extends CI_Controller {
 
 	public function image_upload($id){ 
 
+		$file_name = converttoSEO(pathinfo($_FILES["file"]["name"],PATHINFO_FILENAME)) . ".".pathinfo($_FILES["file"]["name"],PATHINFO_EXTENSION);
+
 		$config["allowed_types"] = "jpg|jpeg|png|webp";
 		$config["upload_path"] = "uploads/$this->viewFolder/";
+		$config["file_name"] = $file_name;		
+		
+
+
 		$this->load->library("upload", $config);
 
+		// file yazma sebebimiz post da name olarak file verdik
 		$upload = $this->upload->do_upload("file");
 		// Bu kod 1 veya 0 cevabı döndürür
 
@@ -270,7 +277,7 @@ class Product extends CI_Controller {
 			$uploaded_file = $this->upload->data("file_name");
 			$this->product_image_model->add(
 				array(
-					"img_url" => $uploaded_file,
+					"img_url" => $file_name,
 					"rank" => 0,
 					"isActive" => 1,
 					"isCover" => 0,
