@@ -9,7 +9,6 @@ product-v -> list -> content.php
 	<div class="col-md-12">
 		<div class="widget p-lg">
 
-
 			<?php if(empty($items)){ ?>
 
 				<div class="alert alert-info text-center">

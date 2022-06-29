@@ -14,6 +14,7 @@ class Product extends CI_Controller {
 		//ekleme düzenklme vs. herşey bunun içinde olucak
 
 		$this->load->model("product_model");
+		$this->load->model("product_image_model");
 	}
 
 	/* veri tabanından tüm ürünlerin çağırılması */
@@ -246,6 +247,13 @@ class Product extends CI_Controller {
 			)
 		);
 
+		$viewData->item_images = $this->product_image_model->get_all(
+			array(
+				"product_id" => $id
+			)
+		);
+
+
 		$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index",$viewData);
 	}
 
@@ -259,7 +267,17 @@ class Product extends CI_Controller {
 		// Bu kod 1 veya 0 cevabı döndürür
 
 		if($upload){
-			echo "islem basarılı";
+			$uploaded_file = $this->upload->data("file_name");
+			$this->product_image_model->add(
+				array(
+					"img_url" => $uploaded_file,
+					"rank" => 0,
+					"isActive" => 1,
+					"isCover" => 0,
+					"createdAt" => date("Y-m-d H:i:s"),
+					"product_id" => $id
+				)
+			);
 		}else{ 
 			echo "islem basarısız";
 		}
