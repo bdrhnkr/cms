@@ -178,6 +178,7 @@ class Product extends CI_Controller {
 		// basarısız ise -> hata ekranda gösterilir
 	}
 
+	// Sil butonu
 	public function delete($id){
 		$delete = $this->product_model->delete(
 			array(
@@ -193,6 +194,7 @@ class Product extends CI_Controller {
 		}
 	}
 
+	// isActive butonu 
 	public function isActiveSetter($id){
 		if ($id) {
 			
@@ -207,7 +209,7 @@ class Product extends CI_Controller {
 		);
 		}
 	}
-
+	//sıralama düzenleme
 	public function rankSetter(){
 		
 		$data = $this->input->post("data");
@@ -230,5 +232,36 @@ class Product extends CI_Controller {
 			); 
 		}
 	}
+	//resimler butonu
+	public function image_form($id){
 
+		$viewData = new stdClass();
+		$viewData->viewFolder = $this->viewFolder;
+		$viewData->subViewFolder = "image";
+
+		// ürün resim sayfasınnda ürünün adı çıkması için
+		$viewData->item = $this->product_model->get(
+			array(
+				"id" => $id
+			)
+		);
+
+		$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index",$viewData);
+	}
+
+	public function image_upload($id){ 
+
+		$config["allowed_types"] = "jpg|jpeg|png|webp";
+		$config["upload_path"] = "uploads/$this->viewFolder/";
+		$this->load->library("upload", $config);
+
+		$upload = $this->upload->do_upload("file");
+		// Bu kod 1 veya 0 cevabı döndürür
+
+		if($upload){
+			echo "islem basarılı";
+		}else{ 
+			echo "islem basarısız";
+		}
+	}
 }
